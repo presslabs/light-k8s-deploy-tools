@@ -19,7 +19,14 @@ steps:
   when:
     event:
       - tag
+      - push
 
 trigger:
   ref:
     - refs/tags/**
+    - refs/heads/master
+---
+kind: signature
+hmac: 7f5d570180845ff23340d7d94bb6f0fadd131de699fd19f8304132e21361e8d9
+
+...
