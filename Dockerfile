@@ -1,15 +1,15 @@
-FROM alpine:3.12
+FROM alpine:3.18
 
 # Install dependencies
 ENV BUILD_DEPS='tar gzip' \
-	RUN_DEPS='curl ca-certificates gettext'
+	RUN_DEPS='curl ca-certificates gettext jq'
 
 RUN apk --no-cache add $BUILD_DEPS $RUN_DEPS
 
 # Install kubectl
-ENV KUBECTL_VERSION=v1.16.13
+ENV KUBECTL_VERSION=v1.28.1
 
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+RUN curl -LO https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
 	chmod +x ./kubectl && \
 	mv ./kubectl /usr/local/bin/
 
